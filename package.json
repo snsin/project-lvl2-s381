@@ -1,0 +1,40 @@
+{
+  "name": "gendif-snsin",
+  "version": "0.0.1",
+  "description": "Console utility. Training project level 2",
+  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snsin/project-lvl2-s381.git"
+  },
+  "keywords": [
+    "learning",
+    "pet-project",
+    "cli"
+  ],
+  "author": "Sergey Sinitsyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snsin/project-lvl2-s381/issues"
+  },
+  "homepage": "https://github.com/snsin/project-lvl2-s381#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "dependencies": {}
+}
