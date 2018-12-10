@@ -1,8 +1,10 @@
 {
-  "name": "gendif-snsin",
+  "name": "gendiff-snsin",
   "version": "0.0.2",
   "description": "Console utility. Training project level 2",
-  "main": "index.js",
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
+  },
   "files": [
     "dist"
   ],
