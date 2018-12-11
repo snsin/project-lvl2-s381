@@ -2,6 +2,7 @@
   "name": "gendiff-snsin",
   "version": "0.0.3",
   "description": "Console utility. Training project level 2",
+  "main": "dist/index.js",
   "bin": {
     "gendiff": "dist/bin/gendiff.js"
   },
@@ -44,7 +45,8 @@
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.1.2",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "regenerator-runtime": "^0.13.1"
   },
   "dependencies": {
     "commander": "^2.19.0"
