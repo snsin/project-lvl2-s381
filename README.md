@@ -3,3 +3,6 @@
 
 ## Installation gendiff and get help
 [![asciicast](https://asciinema.org/a/HSKp6yN16prrWxpbgdNXvYQZR.svg)](https://asciinema.org/a/HSKp6yN16prrWxpbgdNXvYQZR)
+
+## Install gendiff and use to compare two plain .json files
+[![asciicast](https://asciinema.org/a/KiYdZ3azipDOirw3wPIPHo3Sp.svg)](https://asciinema.org/a/KiYdZ3azipDOirw3wPIPHo3Sp)
