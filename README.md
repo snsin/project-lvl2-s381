@@ -6,3 +6,6 @@
 
 ## Install gendiff and use to compare two plain .json files
 [![asciicast](https://asciinema.org/a/KiYdZ3azipDOirw3wPIPHo3Sp.svg)](https://asciinema.org/a/KiYdZ3azipDOirw3wPIPHo3Sp)
+
+## Install gendiff and use to compare two config files (.yaml | .json)
+[![asciicast](https://asciinema.org/a/NWs30SjkkQMLqgOoRSrD7m9Pv.svg)](https://asciinema.org/a/NWs30SjkkQMLqgOoRSrD7m9Pv)
