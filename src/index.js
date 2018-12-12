@@ -1,11 +1,11 @@
-import { uniq, has } from 'lodash';
+import { union, has } from 'lodash';
 import { readFileSync } from 'fs';
 
 const beforeView = (key, value) => `  - ${key}: ${value}`;
 const afterView = (key, value) => `  + ${key}: ${value}`;
 const unchgView = (key, value) => `    ${key}: ${value}`;
 
-const diffCalc = k => (b, a) => {
+const diffCalc = (k, b, a) => {
   if (!has(b, k)) {
     return afterView(k, a[k]);
   }
@@ -23,8 +23,8 @@ const plainJson = (before, after) => {
   const afterData = readFileSync(after, 'utf-8');
   const beforeObject = JSON.parse(beforeData);
   const afterObject = JSON.parse(afterData);
-  const mapper = uniq(Object.keys(beforeObject).concat(Object.keys(afterObject)))
-    .map(k => diffCalc(k));
-  return ['{', ...mapper.map(fn => fn(beforeObject, afterObject)), '}'].join('\n');
+  const diffStr = union(Object.keys(beforeObject), (Object.keys(afterObject)))
+    .map(k => diffCalc(k, beforeObject, afterObject));
+  return ['{', ...diffStr, '}'].join('\n');
 };
 export default plainJson;
