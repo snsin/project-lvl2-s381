@@ -1,5 +1,5 @@
 import { union, has } from 'lodash';
-import { readFileSync } from 'fs';
+import parse from './parsers';
 
 const beforeView = (key, value) => `  - ${key}: ${value}`;
 const afterView = (key, value) => `  + ${key}: ${value}`;
@@ -18,13 +18,11 @@ const diffCalc = (k, b, a) => {
   return [afterView(k, a[k]), beforeView(k, b[k])].join('\n');
 };
 
-const plainJson = (before, after) => {
-  const beforeData = readFileSync(before, 'utf-8');
-  const afterData = readFileSync(after, 'utf-8');
-  const beforeObject = JSON.parse(beforeData);
-  const afterObject = JSON.parse(afterData);
+const diff = (before, after) => {
+  const beforeObject = parse(before);
+  const afterObject = parse(after);
   const diffStr = union(Object.keys(beforeObject), (Object.keys(afterObject)))
     .map(k => diffCalc(k, beforeObject, afterObject));
   return ['{', ...diffStr, '}'].join('\n');
 };
-export default plainJson;
+export default diff;
