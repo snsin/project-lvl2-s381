@@ -1,4 +1,6 @@
+import { readFileSync } from 'fs';
 import { union, has } from 'lodash';
+import path from 'path';
 import parse from './parsers';
 
 const beforeView = (key, value) => `  - ${key}: ${value}`;
@@ -18,9 +20,15 @@ const diffCalc = (k, b, a) => {
   return [afterView(k, a[k]), beforeView(k, b[k])].join('\n');
 };
 
+const getFileType = filePath => path.extname(filePath).toLowerCase().slice(1);
+
 const diff = (before, after) => {
-  const beforeObject = parse(before);
-  const afterObject = parse(after);
+  const beforeType = getFileType(before);
+  const afterType = getFileType(after);
+  const beforeRawData = readFileSync(before, 'utf-8');
+  const afterRawData = readFileSync(after, 'utf-8');
+  const beforeObject = parse(beforeRawData, beforeType);
+  const afterObject = parse(afterRawData, afterType);
   const diffStr = union(Object.keys(beforeObject), (Object.keys(afterObject)))
     .map(k => diffCalc(k, beforeObject, afterObject));
   return ['{', ...diffStr, '}'].join('\n');
