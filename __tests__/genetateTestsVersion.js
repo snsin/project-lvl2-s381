@@ -1,0 +1,22 @@
+import path from 'path';
+import { readFileSync } from 'fs';
+import diff from '../src';
+
+const getDiffTest = (before, after, expected) => {
+  const fixtureDir = '__tests__/__fixtures__';
+  const beforePath = path.join(fixtureDir, before);
+  const afterPath = path.join(fixtureDir, after);
+  const expectedData = readFileSync(path.join(fixtureDir, expected), 'utf-8');
+  return () => expect(diff(beforePath, afterPath)).toBe(expectedData);
+};
+
+test('plain json', getDiffTest('before.json', 'after.json', 'b-a-diff.txt'));
+
+test('plain yaml', getDiffTest('before.yaml', 'after.YML', 'b-a-diff.txt'));
+
+test('".confrc"-like config', getDiffTest('.beforerc', 'after.json', 'b-a-diff.txt'));
+
+test('mixed .json and .yaml configs',
+  getDiffTest('before.json', 'after.YML', 'b-a-diff.txt'));
+
+test('.ini configs', getDiffTest('before.ini', 'after.ini', 'b-a-diff.txt'));
