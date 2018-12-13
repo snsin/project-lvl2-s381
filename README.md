@@ -9,3 +9,6 @@
 
 ## Install gendiff and use to compare two config files (.yaml | .json)
 [![asciicast](https://asciinema.org/a/NWs30SjkkQMLqgOoRSrD7m9Pv.svg)](https://asciinema.org/a/NWs30SjkkQMLqgOoRSrD7m9Pv)
+
+## Install gendiff and use to compare .ini config files
+[![asciicast](https://asciinema.org/a/dtk7LH6C6ig5AiHSHfpcMMVnI.svg)](https://asciinema.org/a/dtk7LH6C6ig5AiHSHfpcMMVnI)
