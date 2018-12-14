@@ -20,3 +20,6 @@ test('mixed .json and .yaml configs',
   getDiffTest('before.json', 'after.YML', 'b-a-diff.txt'));
 
 test('.ini configs', getDiffTest('before.ini', 'after.ini', 'b-a-diff.txt'));
+
+test('nested .json',
+  getDiffTest('nested-before.json', 'nested-after.json', 'nested-b-a-diff.txt'));
