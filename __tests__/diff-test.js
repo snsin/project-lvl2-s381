@@ -23,3 +23,9 @@ test('.ini configs', getDiffTest('before.ini', 'after.ini', 'b-a-diff.txt'));
 
 test('nested .json',
   getDiffTest('nested-before.json', 'nested-after.json', 'nested-b-a-diff.txt'));
+
+test('nested .yaml',
+  getDiffTest('nested-before.yaml', 'nested-after.yaml', 'nested-b-a-diff.txt'));
+
+test('nested .ini',
+  getDiffTest('nested-before.ini', 'nested-after.ini', 'nested-b-a-diff.txt'));
