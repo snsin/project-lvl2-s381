@@ -10,6 +10,14 @@ const getDiffTest = (before, after, expected) => {
   return () => expect(diff(beforePath, afterPath)).toBe(expectedData);
 };
 
+['.json', '.yaml', '.ini'].forEach(ext => test(`plain format with ${ext}`, () => {
+  const fixtureDir = '__tests__/__fixtures__';
+  const beforePath = path.join(fixtureDir, `nested-before${ext}`);
+  const afterPath = path.join(fixtureDir, `nested-after${ext}`);
+  const expectedData = readFileSync(path.join(fixtureDir, 'nested-b-a-diff-plain.txt'), 'utf-8');
+  expect(diff(beforePath, afterPath, 'plain')).toBe(expectedData);
+}));
+
 test('plain json', getDiffTest('before.json', 'after.json', 'b-a-diff.txt'));
 
 test('plain yaml', getDiffTest('before.yaml', 'after.YML', 'b-a-diff.txt'));
@@ -29,3 +37,4 @@ test('nested .yaml',
 
 test('nested .ini',
   getDiffTest('nested-before.ini', 'nested-after.ini', 'nested-b-a-diff.txt'));
+
