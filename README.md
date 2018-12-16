@@ -12,3 +12,6 @@
 
 ## Install gendiff and use to compare .ini config files
 [![asciicast](https://asciinema.org/a/dtk7LH6C6ig5AiHSHfpcMMVnI.svg)](https://asciinema.org/a/dtk7LH6C6ig5AiHSHfpcMMVnI)
+
+## Install gendiff and use to compare complex configs
+[![asciicast](https://asciinema.org/a/FlTfVZeo4Mydnu9NUG0WlUj8I.svg)](https://asciinema.org/a/FlTfVZeo4Mydnu9NUG0WlUj8I)
