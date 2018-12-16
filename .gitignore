@@ -2,3 +2,4 @@
 /.vscode/
 *.swp
 dist
+/src/v2-pretty.js
