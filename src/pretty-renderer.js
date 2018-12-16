@@ -9,8 +9,8 @@ const objRender = (val) => {
 
 const rendererSelector = {
   changed: (node) => {
-    const { value, key } = node;
-    const { oldValue, newValue } = value;
+    const { oldValue, newValue, key } = node;
+    // const { oldValue, newValue } = value;
     const [newValStr, ...newRest] = objRender(newValue);
     const [oldValStr, ...oldRest] = objRender(oldValue);
     return flatten([`- ${key}: ${oldValStr}`, oldRest,
@@ -32,8 +32,8 @@ const rendererSelector = {
     return flatten([`  ${key}: ${valStr}`, rest]);
   },
   nested: (node, fn) => {
-    const { value, key } = node;
-    const [valStr, ...rest] = ['{', fn(value), '  }'];
+    const { children, key } = node;
+    const [valStr, ...rest] = ['{', fn(children), '  }'];
     return flatten([`  ${key}: ${valStr}`, rest]);
   },
 };
