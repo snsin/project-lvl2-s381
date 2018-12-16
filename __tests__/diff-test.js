@@ -37,4 +37,3 @@ test('nested .yaml',
 
 test('nested .ini',
   getDiffTest('nested-before.ini', 'nested-after.ini', 'nested-b-a-diff.txt'));
-
