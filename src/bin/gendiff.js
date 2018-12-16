@@ -7,7 +7,7 @@ gendiff
   .version(version)
   .description('Compares two configuration files and shows a difference.')
   .arguments('<firstConfig> <secondConfig>')
-  .option('-f, --format [type]', 'Output format')
+  .option('-f, --format [type]', 'Output format [plain|pretty|json]', 'pretty')
   .action((firstConfig, secondConfig) => {
     try {
       const result = plainJson(firstConfig, secondConfig);
