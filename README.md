@@ -15,3 +15,6 @@
 
 ## Install gendiff and use to compare complex configs
 [![asciicast](https://asciinema.org/a/FlTfVZeo4Mydnu9NUG0WlUj8I.svg)](https://asciinema.org/a/FlTfVZeo4Mydnu9NUG0WlUj8I)
+
+## Install gendiff and get plain output format
+[![asciicast](https://asciinema.org/a/l3KOCIPU3rZg55XEzikd8bKFi.svg)](https://asciinema.org/a/l3KOCIPU3rZg55XEzikd8bKFi)
