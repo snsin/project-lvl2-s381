@@ -7,11 +7,10 @@ const selector = {
   yaml: yamlParser.safeLoad,
   yml: yamlParser.safeLoad,
   json: JSON.parse,
-  default: JSON.parse,
 };
 const parse = (data, type = 'json') => {
-  const parser = (has(selector, type)) ? selector[type] : selector.default;
-  return parser(data);
+  const decode = (has(selector, type)) ? selector[type] : selector.json;
+  return decode(data);
 };
 
 export default parse;

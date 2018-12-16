@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import parse from './parsers';
 import getDiff from './diff-ast';
-import render from './plain-renderer';
+import render from './pretty-renderer';
 
 const getFileType = filePath => path.extname(filePath).toLowerCase().slice(1);
 const getRawData = filePath => readFileSync(filePath, 'utf-8');
