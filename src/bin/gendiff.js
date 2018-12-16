@@ -1,16 +1,22 @@
 #!/usr/bin/env node
 import gendiff from 'commander';
 import { version } from '../../package.json';
-import plainJson from '..';
+import diff, { defaultRenderer, renderSelector } from '..';
+
+const list = Object.keys(renderSelector).join('|');
+
 
 gendiff
   .version(version)
   .description('Compares two configuration files and shows a difference.')
   .arguments('<firstConfig> <secondConfig>')
-  .option('-f, --format [type]', 'Output format [plain|pretty|json]', 'pretty')
+  .option('-f, --format [type]', `Output format [${list}]`, [defaultRenderer])
   .action((firstConfig, secondConfig) => {
     try {
-      const result = plainJson(firstConfig, secondConfig);
+      if (!list.includes(gendiff.format)) {
+        console.warn(`${gendiff.format} is not supported. Used default (${defaultRenderer})`);
+      }
+      const result = diff(firstConfig, secondConfig, gendiff.format);
       console.log(result);
     } catch (err) {
       const { errno, message } = err;
