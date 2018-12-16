@@ -1,36 +1,20 @@
 import { readFileSync } from 'fs';
-import { union, has } from 'lodash';
 import path from 'path';
 import parse from './parsers';
-
-const beforeView = (key, value) => `  - ${key}: ${value}`;
-const afterView = (key, value) => `  + ${key}: ${value}`;
-const unchgView = (key, value) => `    ${key}: ${value}`;
-
-const diffCalc = (k, b, a) => {
-  if (!has(b, k)) {
-    return afterView(k, a[k]);
-  }
-  if (!has(a, k)) {
-    return beforeView(k, b[k]);
-  }
-  if (b[k] === a[k]) {
-    return unchgView(k, b[k]);
-  }
-  return [afterView(k, a[k]), beforeView(k, b[k])].join('\n');
-};
+import getDiff from './diff-ast';
+import render from './plain-renderer';
 
 const getFileType = filePath => path.extname(filePath).toLowerCase().slice(1);
+const getRawData = filePath => readFileSync(filePath, 'utf-8');
 
 const diff = (before, after) => {
   const beforeType = getFileType(before);
   const afterType = getFileType(after);
-  const beforeRawData = readFileSync(before, 'utf-8');
-  const afterRawData = readFileSync(after, 'utf-8');
+  const beforeRawData = getRawData(before);
+  const afterRawData = getRawData(after);
   const beforeObject = parse(beforeRawData, beforeType);
   const afterObject = parse(afterRawData, afterType);
-  const diffStr = union(Object.keys(beforeObject), (Object.keys(afterObject)))
-    .map(k => diffCalc(k, beforeObject, afterObject));
-  return ['{', ...diffStr, '}'].join('\n');
+  const difference = getDiff(beforeObject, afterObject);
+  return render(difference);
 };
 export default diff;
